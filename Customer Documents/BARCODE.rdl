@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DATA">
+      <DataSourceReference>dsLiveCommercialReports</DataSourceReference>
+      <rd:SecurityType>DataBase</rd:SecurityType>
+      <rd:DataSourceID>941f25d4-7378-4902-af34-6fb36ec33969</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="INVOICES">
+      <Query>
+        <DataSourceName>DATA</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@DOCUMENT_ID">
+            <Value>=Parameters!DOCUMENT_ID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@purchaseLedgerControl">
+            <Value>=Parameters!purchaseLedgerControl.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT
+
+M.DOCNUM,M.DOCTYPE,D.VALUE,
+
+A.TITLE, D.DOCDATE,
+
+CASE WHEN N.NOMINAL = @purchaseLedgerControl  THEN '1' ELSE '0'
+END
+AS 'SORT'
+
+ FROM M_DOCUMENT  M (NOLOCK)
+
+LEFT OUTER JOIN D_DETAILS  D (NOLOCK) ON D.DOC_ID = M.ID AND D.LEDGER='PURCHASE'
+LEFT OUTER JOIN M_NOMINAL N (NOLOCK) ON N.NOMINAL = D.NOMINAL
+LEFT OUTER JOIN M_ACCOUNT A (NOLOCK) ON A.ACCOUNT = D.ACCOUNT AND A.LEDGER = D.LEDGER
+WHERE M.ID = @DOCUMENT_ID 
+
+ORDER BY SORT DESC</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DOCNUM">
+          <DataField>DOCNUM</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DOCTYPE">
+          <DataField>DOCTYPE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="VALUE">
+          <DataField>VALUE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TITLE">
+          <DataField>TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SORT">
+          <DataField>SORT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DOCDATE">
+          <DataField>DOCDATE</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="list1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>5.21229cm</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>4.20688cm</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox5">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox5</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="list1_Details_Group">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!DOCNUM.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>INVOICES</DataSetName>
+            <Top>0.05292cm</Top>
+            <Height>4.20688cm</Height>
+            <Width>5.21229cm</Width>
+            <Style />
+          </Tablix>
+          <Rectangle Name="list1_Contents">
+            <ReportItems>
+              <Textbox Name="DOCTYPE">
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=IIF(Parameters!purchaseLedgerControl.Value = "0" ,"The Purchase Ledger Control Parameter is Incorrect","*" &amp; First(Fields!DOCTYPE.Value) &amp; First(Fields!DOCNUM.Value) &amp; "*")</Value>
+                        <Style>
+                          <FontFamily>=IIF(Parameters!purchaseLedgerControl.Value = "0","Arial","Free 3 of 9")</FontFamily>
+                          <FontSize>=IIF(Parameters!purchaseLedgerControl.Value = "0","8pt","46pt")</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>DOCTYPE</rd:DefaultName>
+                <Top>0.25cm</Top>
+                <Left>0.25442cm</Left>
+                <Height>1.14791cm</Height>
+                <Width>3.78156cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="TITLE">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!TITLE.Value)</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>TITLE</rd:DefaultName>
+                <Top>1.5743cm</Top>
+                <Left>0.25442cm</Left>
+                <Height>0.582cm</Height>
+                <Width>4.70926cm</Width>
+                <ZIndex>1</ZIndex>
+                <Visibility>
+                  <Hidden>true</Hidden>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="DOCNUM">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=Fields!DOCNUM.Value</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>DOCNUM</rd:DefaultName>
+                <Top>2.41818cm</Top>
+                <Left>2.93521cm</Left>
+                <Height>0.582cm</Height>
+                <Width>2.02847cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="DOCTYPE_1">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!DOCTYPE.Value)</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>DOCTYPE_1</rd:DefaultName>
+                <Top>2.41818cm</Top>
+                <Left>0.25442cm</Left>
+                <Height>0.582cm</Height>
+                <Width>2.5044cm</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="VALUE">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=+Sum(Fields!VALUE.Value, "INVOICES")* -1</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                          <Format>'£'0.00;('£'0.00)</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>VALUE</rd:DefaultName>
+                <Top>3.17656cm</Top>
+                <Left>2.52952cm</Left>
+                <Height>0.63528cm</Height>
+                <Width>2.43417cm</Width>
+                <ZIndex>4</ZIndex>
+                <Visibility>
+                  <Hidden>true</Hidden>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                  <rd:FormatSymbolCulture>en-GB</rd:FormatSymbolCulture>
+                </Style>
+              </Textbox>
+              <Textbox Name="VALUE2">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!DOCDATE.Value, "INVOICES")</Value>
+                        <Style>
+                          <FontWeight>Bold</FontWeight>
+                          <Format>dd-MMM-yy</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <TextAlign>Left</TextAlign>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>VALUE</rd:DefaultName>
+                <Top>3.14129cm</Top>
+                <Left>0.25442cm</Left>
+                <Height>0.63528cm</Height>
+                <Width>2.16926cm</Width>
+                <ZIndex>5</ZIndex>
+                <Visibility>
+                  <Hidden>true</Hidden>
+                </Visibility>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Height>3.88938cm</Height>
+            <Width>5.21229cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style />
+          </Rectangle>
+        </ReportItems>
+        <Height>4.36563cm</Height>
+        <Style />
+      </Body>
+      <Width>5.73766cm</Width>
+      <Page>
+        <PageHeight>5.17cm</PageHeight>
+        <PageWidth>5.8cm</PageWidth>
+        <InteractiveHeight>5.17cm</InteractiveHeight>
+        <InteractiveWidth>5.8cm</InteractiveWidth>
+        <ColumnSpacing>1cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="DOCUMENT_ID">
+      <DataType>String</DataType>
+      <Prompt>DOCUMENT_ID</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="purchaseLedgerControl">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>="9500"</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>purchaseLedgerControl</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>en-US</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://dev-commercial-/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>0a6b47ec-e702-4c14-9b01-ff1c2348acdd</rd:ReportID>
+</Report>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "PSF Security Reports", "PSF Security Reports.rptproj", "{BBE11410-BA1F-4489-8909-F42BC013C25C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBE11410-BA1F-4489-8909-F42BC013C25C}.Debug|Default.ActiveCfg = Debug
+		{BBE11410-BA1F-4489-8909-F42BC013C25C}.Debug|Default.Build.0 = DebugLocal
+		{BBE11410-BA1F-4489-8909-F42BC013C25C}.Debug|Default.Deploy.0 = DebugLocal
+		{BBE11410-BA1F-4489-8909-F42BC013C25C}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{BBE11410-BA1F-4489-8909-F42BC013C25C}.DebugLocal|Default.Build.0 = DebugLocal
+		{BBE11410-BA1F-4489-8909-F42BC013C25C}.Release|Default.ActiveCfg = Release
+		{BBE11410-BA1F-4489-8909-F42BC013C25C}.Release|Default.Build.0 = Release
+		{BBE11410-BA1F-4489-8909-F42BC013C25C}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

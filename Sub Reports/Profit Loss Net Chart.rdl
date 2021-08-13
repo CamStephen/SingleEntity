@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsInitialSQLConnection">
+      <DataSourceReference>dsLiveCommercialReports</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>7badc41b-673c-4d41-9146-a004eed71545</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="dsselectedDatabase">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>="Data Source=" &amp; Parameters!ServerName.Value &amp; ";Initial Catalog=" &amp; Parameters!CATALOG.Value &amp; ";Integrated Security = SSPI"</ConnectString>
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>ea7be33a-173f-4371-9aed-4f8b2e123162</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsGetDetails">
+      <Query>
+        <DataSourceName>dsselectedDatabase</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@YEARPERIOD">
+            <Value>=Parameters!YEARPERIOD.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@COMPANYCODE">
+            <Value>=Parameters!COMPANYCODE.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@BUDGETCODE">
+            <Value>=Parameters!BUDGETCODE.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@REVISEDBUDGET">
+            <Value>=Parameters!REVISEDBUDGET.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@FORECASTBUDGET">
+            <Value>=Parameters!FORECASTBUDGET.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@KEYVALUE">
+            <Value>=Parameters!KEYVALUE.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DOMAINNAME">
+            <Value>=Parameters!UserID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@ADD_PERIODS">
+            <Value>=Parameters!ADD_PERIODS.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>EXEC PSF_RPT_SEC_DB_GET_PROFIT_AND_LOSS_DETAILS @YEARPERIOD,
+@COMPANYCODE,
+@BUDGETCODE,
+@REVISEDBUDGET,
+@FORECASTBUDGET,
+@KEYVALUE,
+@DOMAINNAME,
+@ADD_PERIODS</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ANALYSISCODE">
+          <DataField>ANALYSISCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL">
+          <Value>=iif(Fields!STATUS.Value = "ACTUAL",Fields!VALUE.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="BUDGET">
+          <Value>=iif(Fields!STATUS.Value = Parameters!BUDGETCODE.Value,Fields!VALUE.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="MAINGROUP">
+          <DataField>MAINGROUP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOMAN6">
+          <DataField>NOMAN6</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMMITMENTS">
+          <Value>=iif(Fields!STATUS.Value = "COMMITMENTS",Fields!VALUE.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="ACTUAL_INCOME">
+          <Value>=IIF(Fields!MAINGROUP.Value = "7",Fields!ACTUAL.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="PARENT_NODE_ID">
+          <DataField>PARENT_NODE_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL_COST">
+          <Value>=IIF(Fields!MAINGROUP.Value = "8",Fields!ACTUAL.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="FOLDER">
+          <DataField>FOLDER</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="KEYLIST">
+          <DataField>KEYLIST</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL_GROSS">
+          <Value>=Fields!ACTUAL_INCOME.Value - Fields!ACTUAL_COST.Value</Value>
+        </Field>
+        <Field Name="ACTUAL_OVERHEAD">
+          <Value>=IIF(Fields!MAINGROUP.Value = "9",Fields!ACTUAL.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="KEYLIST_TITLE">
+          <DataField>KEYLIST_TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL_NET">
+          <Value>=Fields!ACTUAL_GROSS.Value- Fields!ACTUAL_OVERHEAD.Value</Value>
+        </Field>
+        <Field Name="KEYLIST_GROUP_TITLE">
+          <DataField>KEYLIST_GROUP_TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_INCOME">
+          <Value>=IIF(Fields!MAINGROUP.Value = "7",Fields!BUDGET.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="ANALYSISTITLE">
+          <DataField>ANALYSISTITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_COST">
+          <Value>=IIF(Fields!MAINGROUP.Value = "8",Fields!BUDGET.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="YEARCODE">
+          <DataField>YEARCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_GROSS">
+          <Value>=Fields!BUDGET_INCOME.Value - Fields!BUDGET_COST.Value</Value>
+        </Field>
+        <Field Name="PERIOD">
+          <DataField>PERIOD</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_OVERHEAD">
+          <Value>=IIF(Fields!MAINGROUP.Value = "9",Fields!BUDGET.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="VALUE">
+          <DataField>VALUE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_NET">
+          <Value>=Fields!BUDGET_GROSS.Value - Fields!BUDGET_OVERHEAD.Value</Value>
+        </Field>
+        <Field Name="STATUS">
+          <DataField>STATUS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMPANYCODE">
+          <DataField>COMPANYCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMMITMENTS_INCOME">
+          <Value>=IIF(Fields!MAINGROUP.Value = "7",Fields!COMMITMENTS.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="COMMITMENTS_COST">
+          <Value>=IIF(Fields!MAINGROUP.Value = "8",Fields!COMMITMENTS.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="YEARPERIOD">
+          <DataField>YEARPERIOD</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMMITMENTS_GROSS">
+          <Value>=Fields!COMMITMENTS_INCOME.Value - Fields!COMMITMENTS_COST.Value</Value>
+        </Field>
+        <Field Name="PERIOD_TITLE">
+          <DataField>PERIOD_TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMMITMENTS_OVERHEAD">
+          <Value>=IIF(Fields!MAINGROUP.Value = "9",Fields!COMMITMENTS.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="COMMITMENTS_NET">
+          <Value>=Fields!COMMITMENTS_GROSS.Value - Fields!COMMITMENTS_OVERHEAD.Value</Value>
+        </Field>
+        <Field Name="YTD_GROUPING">
+          <Value>=IIF(Fields!YEARCODE.Value &amp; "." &amp; Fields!PERIOD.Value &lt;= Parameters!YEARPERIOD.Value, "1", "0")</Value>
+        </Field>
+        <Field Name="ANNUAL_GROUPING">
+          <Value>=IIF(Fields!YEARCODE.Value = Left(Parameters!YEARPERIOD.Label, InStr(Parameters!YEARPERIOD.Label,".")-1), "1", "0")</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Chart Name="Chart1">
+            <ChartCategoryHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="Chart1_CategoryGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!YEARPERIOD.Value</GroupExpression>
+                    </GroupExpressions>
+                    <Filters>
+                      <Filter>
+                        <FilterExpression>=Fields!YEARPERIOD.Value</FilterExpression>
+                        <Operator>LessThanOrEqual</Operator>
+                        <FilterValues>
+                          <FilterValue>=Parameters!YEARPERIOD.Value</FilterValue>
+                        </FilterValues>
+                      </Filter>
+                    </Filters>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!YEARPERIOD.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <Label>=Fields!PERIOD_TITLE.Value</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartCategoryHierarchy>
+            <ChartSeriesHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Label>BUDGET NET</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartSeriesHierarchy>
+            <ChartData>
+              <ChartSeriesCollection>
+                <ChartSeries Name="Series">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=SUM(Fields!ACTUAL_NET.Value) - SUM(Fields!BUDGET_NET.Value)</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style />
+                      </ChartDataLabel>
+                      <ToolTip>=FORMAT(SUM(Fields!ACTUAL_NET.Value) - SUM(Fields!BUDGET_NET.Value),"#,0,.00;(#,0,.00);'-'")</ToolTip>
+                      <Style>
+                        <Color>=Code.SetColor(SUM(Fields!ACTUAL_NET.Value) - SUM(Fields!BUDGET_NET.Value))</Color>
+                      </Style>
+                      <ChartMarker>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Style />
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ChartItemInLegend>
+                    <LegendText>Net Profit</LegendText>
+                  </ChartItemInLegend>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+              </ChartSeriesCollection>
+            </ChartData>
+            <ChartAreas>
+              <ChartArea Name="Default">
+                <ChartCategoryAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <Interval>1</Interval>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMinorTickMarks>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption>Axis Title</Caption>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMinorTickMarks>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartCategoryAxes>
+                <ChartValueAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <FontFamily>Calibri</FontFamily>
+                      <FontSize>8pt</FontSize>
+                      <Format>#,0,.00;(#,0,.00)</Format>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontFamily>Calibri</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMinorTickMarks>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption>Axis Title</Caption>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMinorTickMarks>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartValueAxes>
+                <Style>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                </Style>
+              </ChartArea>
+            </ChartAreas>
+            <ChartTitles>
+              <ChartTitle Name="Default">
+                <Caption>Net Profit Rolling 12 months</Caption>
+                <Style>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                  <FontFamily>Calibri</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                  <TextAlign>General</TextAlign>
+                  <VerticalAlign>Top</VerticalAlign>
+                </Style>
+              </ChartTitle>
+            </ChartTitles>
+            <Palette>BrightPastel</Palette>
+            <ChartBorderSkin>
+              <ChartBorderSkinType>Emboss</ChartBorderSkinType>
+              <Style>
+                <BackgroundColor>Gray</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <Color>White</Color>
+              </Style>
+            </ChartBorderSkin>
+            <ChartNoDataMessage Name="NoDataMessage">
+              <Caption>No Data Available</Caption>
+              <Style>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <TextAlign>General</TextAlign>
+                <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </ChartNoDataMessage>
+            <DataSetName>dsGetDetails</DataSetName>
+            <Height>6.26682cm</Height>
+            <Width>16.15909cm</Width>
+            <Style>
+              <Border>
+                <Color>LightGrey</Color>
+                <Style>Solid</Style>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </Chart>
+        </ReportItems>
+        <Height>2.46725in</Height>
+        <Style />
+      </Body>
+      <Width>6.36185in</Width>
+      <Page>
+        <PageHeight>21cm</PageHeight>
+        <PageWidth>29.7cm</PageWidth>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0.5cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0.5cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="ServerName">
+      <DataType>String</DataType>
+      <Prompt>SQL ServerName</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CATALOG">
+      <DataType>String</DataType>
+      <Prompt>Default SQL Catalog</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UserID">
+      <DataType>String</DataType>
+      <Prompt>Either PSF UserID or Windows user if not found</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="COMPANYCODE">
+      <DataType>String</DataType>
+      <Prompt>Please select the Company</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="YEARPERIOD">
+      <DataType>String</DataType>
+      <Prompt>Please select the Period</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ADD_PERIODS">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>None</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Include Year End Periods?</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="BUDGETCODE">
+      <DataType>String</DataType>
+      <Prompt>Select Budget for Variance Analysis</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FORECASTBUDGET">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>BUDGET</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Please select the Forecast Budget</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="KEYVALUE">
+      <DataType>String</DataType>
+      <Prompt>Please select the Costing Type(s) ?</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="COMMITMENTS">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>N</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Include Commitments?</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ShowDetails">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>N</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Hide or Show Detail lines</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="REVISEDBUDGET">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>None</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>REVISEDBUDGET</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function Divide(Var as double, Bud as double) AS double
+    IF IsNothing(Var) Or IsNothing(Bud) Or Var = 0.00 Then
+        Divide = 0
+    ELSEIF Bud &lt;&gt; 0.00
+        Divide = Var  / Bud
+    ELSE
+        Divide = 0
+    END IF
+End Function
+
+Public Shared Function SetColor(ByVal Value As Integer) As String
+SetColor = "#83AD34"
+If Value &lt; 0.00 Then 
+SetColor = "#D12B06"
+End If
+End Function
+
+Public Function ReplaceNull(VarValue as Double) AS Double
+
+IF (IsNothing(VarValue)) 
+
+	ReplaceNull = 0
+ELSE 
+
+	ReplaceNull = VarValue
+
+END IF
+
+End Function</Code>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>53c8da44-889e-424b-a0b7-8a11c5da8baf</rd:ReportID>
+</Report>

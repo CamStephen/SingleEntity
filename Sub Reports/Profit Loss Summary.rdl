@@ -1,0 +1,2300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix3">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>6.42917cm</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox431">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Income as % of Budget</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox430</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>5.4cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <GaugePanel Name="GaugePanel7">
+                      <RadialGauges>
+                        <RadialGauge Name="RadialGauge1">
+                          <GaugeScales>
+                            <RadialScale Name="RadialScale1">
+                              <GaugePointers>
+                                <RadialPointer Name="RadialPointer1">
+                                  <PointerCap>
+                                    <Style>
+                                      <BackgroundColor>White</BackgroundColor>
+                                      <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                                      <BackgroundGradientEndColor>DimGray</BackgroundGradientEndColor>
+                                      <BackgroundHatchType>None</BackgroundHatchType>
+                                    </Style>
+                                    <CapImage>
+                                      <OffsetX>0pt</OffsetX>
+                                      <OffsetY>0pt</OffsetY>
+                                      <Source>External</Source>
+                                      <Value />
+                                    </CapImage>
+                                    <CapStyle>RoundedWithAdditionalTop</CapStyle>
+                                    <Width>33</Width>
+                                  </PointerCap>
+                                  <NeedleStyle>StealthArrowWithWideTail</NeedleStyle>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <BackgroundColor>White</BackgroundColor>
+                                    <BackgroundGradientType>VerticalCenter</BackgroundGradientType>
+                                    <BackgroundGradientEndColor>DarkBlue</BackgroundGradientEndColor>
+                                    <BackgroundHatchType>None</BackgroundHatchType>
+                                    <ShadowOffset>1pt</ShadowOffset>
+                                  </Style>
+                                  <GaugeInputValue>
+                                    <Value>=code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value))</Value>
+                                    <Multiplier>1</Multiplier>
+                                  </GaugeInputValue>
+                                  <PointerImage>
+                                    <OffsetX>0pt</OffsetX>
+                                    <OffsetY>0pt</OffsetY>
+                                    <Source>External</Source>
+                                    <Value />
+                                  </PointerImage>
+                                  <MarkerLength>25</MarkerLength>
+                                  <MarkerStyle>Wedge</MarkerStyle>
+                                  <Placement>Inside</Placement>
+                                  <Width>15</Width>
+                                </RadialPointer>
+                              </GaugePointers>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>CornflowerBlue</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                                <ShadowOffset>0pt</ShadowOffset>
+                              </Style>
+                              <Interval>NaN</Interval>
+                              <IntervalOffset>NaN</IntervalOffset>
+                              <MaximumValue>
+                                <Value>=iif(code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value)) &gt; 1, (code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value))) + "0.50", 1)</Value>
+                                <Multiplier>1</Multiplier>
+                              </MaximumValue>
+                              <MinimumValue>
+                                <Value>0</Value>
+                                <Multiplier>1</Multiplier>
+                              </MinimumValue>
+                              <GaugeMajorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>18</Length>
+                                <Width>2</Width>
+                              </GaugeMajorTickMarks>
+                              <GaugeMinorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>8</Length>
+                                <Width>1</Width>
+                                <Hidden>true</Hidden>
+                              </GaugeMinorTickMarks>
+                              <MaximumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MaximumPin>
+                              <MinimumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MinimumPin>
+                              <ScaleLabels>
+                                <Style>
+                                  <FontSize>14pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Format>0%</Format>
+                                </Style>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <DistanceFromScale>0</DistanceFromScale>
+                                <RotateLabels>true</RotateLabels>
+                                <UseFontPercent>true</UseFontPercent>
+                              </ScaleLabels>
+                              <Width>0</Width>
+                            </RadialScale>
+                            <RadialScale Name="RadialScale2">
+                              <Radius>24</Radius>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>CornflowerBlue</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                                <ShadowOffset>0pt</ShadowOffset>
+                              </Style>
+                              <Interval>NaN</Interval>
+                              <IntervalOffset>NaN</IntervalOffset>
+                              <MaximumValue>
+                                <Value>100</Value>
+                                <Multiplier>1</Multiplier>
+                              </MaximumValue>
+                              <MinimumValue>
+                                <Value>0</Value>
+                                <Multiplier>1</Multiplier>
+                              </MinimumValue>
+                              <GaugeMajorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>18</Length>
+                                <Width>2</Width>
+                              </GaugeMajorTickMarks>
+                              <GaugeMinorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>8</Length>
+                                <Width>1</Width>
+                                <Hidden>true</Hidden>
+                              </GaugeMinorTickMarks>
+                              <MaximumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MaximumPin>
+                              <MinimumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MinimumPin>
+                              <ScaleLabels>
+                                <Style>
+                                  <FontSize>14pt</FontSize>
+                                  <Color>#404040</Color>
+                                </Style>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <DistanceFromScale>0</DistanceFromScale>
+                                <RotateLabels>true</RotateLabels>
+                                <ShowEndLabels>true</ShowEndLabels>
+                                <Hidden>true</Hidden>
+                                <UseFontPercent>true</UseFontPercent>
+                              </ScaleLabels>
+                              <Width>0</Width>
+                            </RadialScale>
+                          </GaugeScales>
+                          <BackFrame>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
+                              <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                              <BackgroundGradientEndColor>Gainsboro</BackgroundGradientEndColor>
+                              <BackgroundHatchType>None</BackgroundHatchType>
+                              <ShadowOffset>0pt</ShadowOffset>
+                            </Style>
+                            <FrameStyle>Edged</FrameStyle>
+                            <FrameShape>CustomCircular1</FrameShape>
+                            <FrameBackground>
+                              <Style>
+                                <BackgroundColor>White</BackgroundColor>
+                                <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                                <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                              </Style>
+                            </FrameBackground>
+                            <FrameImage>
+                              <Source>External</Source>
+                              <Value />
+                            </FrameImage>
+                          </BackFrame>
+                          <ClipContent>true</ClipContent>
+                          <TopImage>
+                            <Source>External</Source>
+                            <Value />
+                          </TopImage>
+                          <AspectRatio>1</AspectRatio>
+                          <Height>100</Height>
+                          <Width>100</Width>
+                          <ToolTip>=FormatPercent(code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value)),0)</ToolTip>
+                        </RadialGauge>
+                      </RadialGauges>
+                      <BackFrame>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>Gainsboro</BackgroundColor>
+                          <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                          <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                          <BackgroundHatchType>None</BackgroundHatchType>
+                          <ShadowOffset>0pt</ShadowOffset>
+                        </Style>
+                        <FrameBackground>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                            <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                            <BackgroundHatchType>None</BackgroundHatchType>
+                          </Style>
+                        </FrameBackground>
+                        <FrameImage>
+                          <Source>External</Source>
+                          <Value />
+                        </FrameImage>
+                      </BackFrame>
+                      <ShadowIntensity>8</ShadowIntensity>
+                      <TopImage>
+                        <Source>External</Source>
+                        <Value />
+                      </TopImage>
+                      <DataSetName>dsGetDetails</DataSetName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                      </Style>
+                    </GaugePanel>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="grpYTD2">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!YTD_GROUPING.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!YTD_GROUPING.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>1</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!YEARPERIOD.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Income">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!MAINGROUP.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!MAINGROUP.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>7</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!MAINGROUP.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="grpCategory2">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!MAINGROUP.Value</GroupExpression>
+                    </GroupExpressions>
+                    <Parent>=Fields!MAINGROUP.Value</Parent>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!MAINGROUP.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
+        <DataSetName>dsGetDetails</DataSetName>
+        <Left>0.05468cm</Left>
+        <Height>6cm</Height>
+        <Width>6.42917cm</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Tablix Name="Tablix4">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>6.42917cm</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox75">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Costs as % of Budget</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox74</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>5.4cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <GaugePanel Name="GaugePanel8">
+                      <RadialGauges>
+                        <RadialGauge Name="RadialGauge1">
+                          <GaugeScales>
+                            <RadialScale Name="RadialScale1">
+                              <GaugePointers>
+                                <RadialPointer Name="RadialPointer1">
+                                  <PointerCap>
+                                    <Style>
+                                      <BackgroundColor>White</BackgroundColor>
+                                      <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                                      <BackgroundGradientEndColor>DimGray</BackgroundGradientEndColor>
+                                      <BackgroundHatchType>None</BackgroundHatchType>
+                                    </Style>
+                                    <CapImage>
+                                      <OffsetX>0pt</OffsetX>
+                                      <OffsetY>0pt</OffsetY>
+                                      <Source>External</Source>
+                                      <Value />
+                                    </CapImage>
+                                    <Reflection>true</Reflection>
+                                    <CapStyle>RoundedWithAdditionalTop</CapStyle>
+                                    <Width>36</Width>
+                                  </PointerCap>
+                                  <NeedleStyle>StealthArrowWithWideTail</NeedleStyle>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <BackgroundColor>White</BackgroundColor>
+                                    <BackgroundGradientType>VerticalCenter</BackgroundGradientType>
+                                    <BackgroundGradientEndColor>DarkBlue</BackgroundGradientEndColor>
+                                    <BackgroundHatchType>None</BackgroundHatchType>
+                                    <ShadowOffset>1pt</ShadowOffset>
+                                  </Style>
+                                  <GaugeInputValue>
+                                    <Value>=code.Divide(Sum(Fields!ACTUAL_COST.Value), Sum(Fields!BUDGET_COST.Value))</Value>
+                                    <Multiplier>1</Multiplier>
+                                  </GaugeInputValue>
+                                  <BarStart>Zero</BarStart>
+                                  <PointerImage>
+                                    <OffsetX>0pt</OffsetX>
+                                    <OffsetY>0pt</OffsetY>
+                                    <Source>External</Source>
+                                    <Value />
+                                  </PointerImage>
+                                  <MarkerLength>25</MarkerLength>
+                                  <MarkerStyle>Wedge</MarkerStyle>
+                                  <Placement>Inside</Placement>
+                                  <Width>15</Width>
+                                </RadialPointer>
+                              </GaugePointers>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>CornflowerBlue</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                                <ShadowOffset>0pt</ShadowOffset>
+                              </Style>
+                              <Interval>NaN</Interval>
+                              <IntervalOffset>NaN</IntervalOffset>
+                              <MaximumValue>
+                                <Value>=iif(code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value)) &gt; 1, (code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value))) + "0.50", 1)</Value>
+                                <Multiplier>1</Multiplier>
+                              </MaximumValue>
+                              <MinimumValue>
+                                <Value>0</Value>
+                                <Multiplier>1</Multiplier>
+                              </MinimumValue>
+                              <GaugeMajorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>18</Length>
+                                <Width>2</Width>
+                              </GaugeMajorTickMarks>
+                              <GaugeMinorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>8</Length>
+                                <Width>1</Width>
+                                <Hidden>true</Hidden>
+                              </GaugeMinorTickMarks>
+                              <MaximumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MaximumPin>
+                              <MinimumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MinimumPin>
+                              <ScaleLabels>
+                                <Style>
+                                  <FontSize>14pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Format>0%</Format>
+                                </Style>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <DistanceFromScale>0</DistanceFromScale>
+                                <RotateLabels>true</RotateLabels>
+                                <UseFontPercent>true</UseFontPercent>
+                              </ScaleLabels>
+                              <Width>0</Width>
+                            </RadialScale>
+                            <RadialScale Name="RadialScale2">
+                              <Radius>24</Radius>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>CornflowerBlue</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                                <ShadowOffset>0pt</ShadowOffset>
+                              </Style>
+                              <Interval>NaN</Interval>
+                              <IntervalOffset>NaN</IntervalOffset>
+                              <MaximumValue>
+                                <Value>100</Value>
+                                <Multiplier>1</Multiplier>
+                              </MaximumValue>
+                              <MinimumValue>
+                                <Value>0</Value>
+                                <Multiplier>1</Multiplier>
+                              </MinimumValue>
+                              <GaugeMajorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>18</Length>
+                                <Width>2</Width>
+                              </GaugeMajorTickMarks>
+                              <GaugeMinorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>8</Length>
+                                <Width>1</Width>
+                                <Hidden>true</Hidden>
+                              </GaugeMinorTickMarks>
+                              <MaximumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MaximumPin>
+                              <MinimumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MinimumPin>
+                              <ScaleLabels>
+                                <Style>
+                                  <FontSize>14pt</FontSize>
+                                  <Color>#404040</Color>
+                                </Style>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <DistanceFromScale>0</DistanceFromScale>
+                                <RotateLabels>true</RotateLabels>
+                                <ShowEndLabels>true</ShowEndLabels>
+                                <Hidden>true</Hidden>
+                                <UseFontPercent>true</UseFontPercent>
+                              </ScaleLabels>
+                              <Width>0</Width>
+                            </RadialScale>
+                          </GaugeScales>
+                          <BackFrame>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
+                              <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                              <BackgroundGradientEndColor>Gainsboro</BackgroundGradientEndColor>
+                              <BackgroundHatchType>None</BackgroundHatchType>
+                              <ShadowOffset>0pt</ShadowOffset>
+                            </Style>
+                            <FrameStyle>Edged</FrameStyle>
+                            <FrameShape>CustomCircular1</FrameShape>
+                            <FrameBackground>
+                              <Style>
+                                <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                                <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                              </Style>
+                            </FrameBackground>
+                            <FrameImage>
+                              <Source>External</Source>
+                              <Value />
+                            </FrameImage>
+                          </BackFrame>
+                          <ClipContent>true</ClipContent>
+                          <TopImage>
+                            <Source>External</Source>
+                            <Value />
+                          </TopImage>
+                          <AspectRatio>1</AspectRatio>
+                          <Height>100</Height>
+                          <Width>100</Width>
+                          <ToolTip>=FormatPercent(code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value)),0)</ToolTip>
+                        </RadialGauge>
+                      </RadialGauges>
+                      <BackFrame>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>Gainsboro</BackgroundColor>
+                          <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                          <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                          <BackgroundHatchType>None</BackgroundHatchType>
+                          <ShadowOffset>0pt</ShadowOffset>
+                        </Style>
+                        <FrameBackground>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                            <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                            <BackgroundHatchType>None</BackgroundHatchType>
+                          </Style>
+                        </FrameBackground>
+                        <FrameImage>
+                          <Source>External</Source>
+                          <Value />
+                        </FrameImage>
+                      </BackFrame>
+                      <TopImage>
+                        <Source>External</Source>
+                        <Value />
+                      </TopImage>
+                      <DataSetName>dsGetDetails</DataSetName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                      </Style>
+                    </GaugePanel>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="grpYTD3">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!YTD_GROUPING.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!YTD_GROUPING.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>1</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!YEARPERIOD.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="Income_Expenditure3">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!MAINGROUP.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!MAINGROUP.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>8</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!MAINGROUP.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="grpCategory3">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!MAINGROUP.Value</GroupExpression>
+                    </GroupExpressions>
+                    <Parent>=Fields!MAINGROUP.Value</Parent>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!MAINGROUP.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
+        <DataSetName>dsGetDetails</DataSetName>
+        <Left>6.48385cm</Left>
+        <Height>6cm</Height>
+        <Width>6.42917cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Tablix Name="Tablix5">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>6.42917cm</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox433">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Overheads as % of Budget</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox430</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>5.4cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <GaugePanel Name="GaugePanel9">
+                      <RadialGauges>
+                        <RadialGauge Name="RadialGauge1">
+                          <GaugeScales>
+                            <RadialScale Name="RadialScale1">
+                              <GaugePointers>
+                                <RadialPointer Name="RadialPointer1">
+                                  <PointerCap>
+                                    <Style>
+                                      <BackgroundColor>White</BackgroundColor>
+                                      <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                                      <BackgroundGradientEndColor>DimGray</BackgroundGradientEndColor>
+                                      <BackgroundHatchType>None</BackgroundHatchType>
+                                    </Style>
+                                    <CapImage>
+                                      <OffsetX>0pt</OffsetX>
+                                      <OffsetY>0pt</OffsetY>
+                                      <Source>External</Source>
+                                      <Value />
+                                    </CapImage>
+                                    <CapStyle>RoundedWithAdditionalTop</CapStyle>
+                                    <Width>33</Width>
+                                  </PointerCap>
+                                  <NeedleStyle>StealthArrowWithWideTail</NeedleStyle>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <BackgroundColor>White</BackgroundColor>
+                                    <BackgroundGradientType>VerticalCenter</BackgroundGradientType>
+                                    <BackgroundGradientEndColor>DarkBlue</BackgroundGradientEndColor>
+                                    <BackgroundHatchType>None</BackgroundHatchType>
+                                    <ShadowOffset>1pt</ShadowOffset>
+                                  </Style>
+                                  <GaugeInputValue>
+                                    <Value>=code.Divide(Sum(Fields!ACTUAL_OVERHEAD.Value), Sum(Fields!BUDGET_OVERHEAD.Value))</Value>
+                                    <Multiplier>1</Multiplier>
+                                  </GaugeInputValue>
+                                  <PointerImage>
+                                    <OffsetX>0pt</OffsetX>
+                                    <OffsetY>0pt</OffsetY>
+                                    <Source>External</Source>
+                                    <Value />
+                                  </PointerImage>
+                                  <MarkerLength>25</MarkerLength>
+                                  <MarkerStyle>Wedge</MarkerStyle>
+                                  <Placement>Inside</Placement>
+                                  <Width>15</Width>
+                                </RadialPointer>
+                              </GaugePointers>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>CornflowerBlue</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                                <ShadowOffset>0pt</ShadowOffset>
+                              </Style>
+                              <Interval>NaN</Interval>
+                              <IntervalOffset>NaN</IntervalOffset>
+                              <MaximumValue>
+                                <Value>=iif(code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value)) &gt; 1, (code.Divide(Sum(Fields!ACTUAL.Value), Sum(Fields!BUDGET.Value))) + "0.50", 1)</Value>
+                                <Multiplier>1</Multiplier>
+                              </MaximumValue>
+                              <MinimumValue>
+                                <Value>0</Value>
+                                <Multiplier>1</Multiplier>
+                              </MinimumValue>
+                              <GaugeMajorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>18</Length>
+                                <Width>2</Width>
+                              </GaugeMajorTickMarks>
+                              <GaugeMinorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>8</Length>
+                                <Width>1</Width>
+                                <Hidden>true</Hidden>
+                              </GaugeMinorTickMarks>
+                              <MaximumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MaximumPin>
+                              <MinimumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MinimumPin>
+                              <ScaleLabels>
+                                <Style>
+                                  <FontSize>14pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Format>0%</Format>
+                                </Style>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <DistanceFromScale>0</DistanceFromScale>
+                                <RotateLabels>true</RotateLabels>
+                                <UseFontPercent>true</UseFontPercent>
+                              </ScaleLabels>
+                              <Width>0</Width>
+                            </RadialScale>
+                            <RadialScale Name="RadialScale2">
+                              <Radius>24</Radius>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>CornflowerBlue</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                                <ShadowOffset>0pt</ShadowOffset>
+                              </Style>
+                              <Interval>NaN</Interval>
+                              <IntervalOffset>NaN</IntervalOffset>
+                              <MaximumValue>
+                                <Value>100</Value>
+                                <Multiplier>1</Multiplier>
+                              </MaximumValue>
+                              <MinimumValue>
+                                <Value>0</Value>
+                                <Multiplier>1</Multiplier>
+                              </MinimumValue>
+                              <GaugeMajorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>18</Length>
+                                <Width>2</Width>
+                              </GaugeMajorTickMarks>
+                              <GaugeMinorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>8</Length>
+                                <Width>1</Width>
+                                <Hidden>true</Hidden>
+                              </GaugeMinorTickMarks>
+                              <MaximumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MaximumPin>
+                              <MinimumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MinimumPin>
+                              <ScaleLabels>
+                                <Style>
+                                  <FontSize>14pt</FontSize>
+                                  <Color>#404040</Color>
+                                </Style>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <DistanceFromScale>0</DistanceFromScale>
+                                <RotateLabels>true</RotateLabels>
+                                <ShowEndLabels>true</ShowEndLabels>
+                                <Hidden>true</Hidden>
+                                <UseFontPercent>true</UseFontPercent>
+                              </ScaleLabels>
+                              <Width>0</Width>
+                            </RadialScale>
+                          </GaugeScales>
+                          <BackFrame>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
+                              <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                              <BackgroundGradientEndColor>Gainsboro</BackgroundGradientEndColor>
+                              <BackgroundHatchType>None</BackgroundHatchType>
+                              <ShadowOffset>0pt</ShadowOffset>
+                            </Style>
+                            <FrameStyle>Edged</FrameStyle>
+                            <FrameShape>CustomCircular1</FrameShape>
+                            <FrameBackground>
+                              <Style>
+                                <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                                <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                              </Style>
+                            </FrameBackground>
+                            <FrameImage>
+                              <Source>External</Source>
+                              <Value />
+                            </FrameImage>
+                          </BackFrame>
+                          <ClipContent>true</ClipContent>
+                          <TopImage>
+                            <Source>External</Source>
+                            <Value />
+                          </TopImage>
+                          <AspectRatio>1</AspectRatio>
+                          <Height>100</Height>
+                          <Width>100</Width>
+                          <ToolTip>=FormatPercent(code.Divide(Sum(Fields!ACTUAL_OVERHEAD.Value), Sum(Fields!BUDGET_OVERHEAD.Value)),0)</ToolTip>
+                        </RadialGauge>
+                      </RadialGauges>
+                      <BackFrame>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>Gainsboro</BackgroundColor>
+                          <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                          <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                          <BackgroundHatchType>None</BackgroundHatchType>
+                          <ShadowOffset>0pt</ShadowOffset>
+                        </Style>
+                        <FrameBackground>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                            <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                            <BackgroundHatchType>None</BackgroundHatchType>
+                          </Style>
+                        </FrameBackground>
+                        <FrameImage>
+                          <Source>External</Source>
+                          <Value />
+                        </FrameImage>
+                      </BackFrame>
+                      <TopImage>
+                        <Source>External</Source>
+                        <Value />
+                      </TopImage>
+                      <DataSetName>dsGetDetails</DataSetName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                      </Style>
+                    </GaugePanel>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="grpYTD4">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!YTD_GROUPING.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!YTD_GROUPING.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>1</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!YEARPERIOD.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="OverHeads">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!MAINGROUP.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!MAINGROUP.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>9</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!MAINGROUP.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="grpCategory4">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!MAINGROUP.Value</GroupExpression>
+                    </GroupExpressions>
+                    <Parent>=Fields!MAINGROUP.Value</Parent>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!MAINGROUP.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
+        <DataSetName>dsGetDetails</DataSetName>
+        <Top>6.03528cm</Top>
+        <Left>0.04524cm</Left>
+        <Height>6cm</Height>
+        <Width>6.42917cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+      <Tablix Name="Tablix6">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>6.42917cm</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.6cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox76">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Total Net as % of Budget</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox74</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>5.4cm</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <GaugePanel Name="GaugePanel10">
+                      <RadialGauges>
+                        <RadialGauge Name="RadialGauge1">
+                          <GaugeScales>
+                            <RadialScale Name="RadialScale1">
+                              <GaugePointers>
+                                <RadialPointer Name="RadialPointer1">
+                                  <PointerCap>
+                                    <Style>
+                                      <BackgroundColor>White</BackgroundColor>
+                                      <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                                      <BackgroundGradientEndColor>DimGray</BackgroundGradientEndColor>
+                                      <BackgroundHatchType>None</BackgroundHatchType>
+                                    </Style>
+                                    <CapImage>
+                                      <OffsetX>0pt</OffsetX>
+                                      <OffsetY>0pt</OffsetY>
+                                      <Source>External</Source>
+                                      <Value />
+                                    </CapImage>
+                                    <CapStyle>RoundedWithAdditionalTop</CapStyle>
+                                    <Width>33</Width>
+                                  </PointerCap>
+                                  <NeedleStyle>StealthArrowWithWideTail</NeedleStyle>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                    <BackgroundColor>White</BackgroundColor>
+                                    <BackgroundGradientType>VerticalCenter</BackgroundGradientType>
+                                    <BackgroundGradientEndColor>DarkBlue</BackgroundGradientEndColor>
+                                    <BackgroundHatchType>None</BackgroundHatchType>
+                                    <ShadowOffset>1pt</ShadowOffset>
+                                  </Style>
+                                  <GaugeInputValue>
+                                    <Value>=code.Divide(Sum(Fields!ACTUAL_NET.Value), Sum(Fields!BUDGET_NET.Value))</Value>
+                                    <Multiplier>1</Multiplier>
+                                  </GaugeInputValue>
+                                  <BarStart>Zero</BarStart>
+                                  <PointerImage>
+                                    <OffsetX>0pt</OffsetX>
+                                    <OffsetY>0pt</OffsetY>
+                                    <Source>External</Source>
+                                    <Value />
+                                  </PointerImage>
+                                  <MarkerLength>25</MarkerLength>
+                                  <MarkerStyle>Wedge</MarkerStyle>
+                                  <Placement>Inside</Placement>
+                                  <Width>15</Width>
+                                </RadialPointer>
+                              </GaugePointers>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>CornflowerBlue</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                                <ShadowOffset>0pt</ShadowOffset>
+                              </Style>
+                              <Interval>NaN</Interval>
+                              <IntervalOffset>NaN</IntervalOffset>
+                              <MaximumValue>
+                                <Value>=iif(code.Divide(Sum(Fields!ACTUAL_NET.Value), Sum(Fields!BUDGET_NET.Value)) &gt; 1, (code.Divide(Sum(Fields!ACTUAL_NET.Value), Sum(Fields!BUDGET_NET.Value))) + "0.50", 1)</Value>
+                                <Multiplier>1</Multiplier>
+                              </MaximumValue>
+                              <MinimumValue>
+                                <Value>0</Value>
+                                <Multiplier>1</Multiplier>
+                              </MinimumValue>
+                              <GaugeMajorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>18</Length>
+                                <Width>2</Width>
+                              </GaugeMajorTickMarks>
+                              <GaugeMinorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>8</Length>
+                                <Width>1</Width>
+                                <Hidden>true</Hidden>
+                              </GaugeMinorTickMarks>
+                              <MaximumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MaximumPin>
+                              <MinimumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MinimumPin>
+                              <ScaleLabels>
+                                <Style>
+                                  <FontSize>14pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                  <Format>0%</Format>
+                                </Style>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <DistanceFromScale>0</DistanceFromScale>
+                                <RotateLabels>true</RotateLabels>
+                                <UseFontPercent>true</UseFontPercent>
+                              </ScaleLabels>
+                              <Width>0</Width>
+                            </RadialScale>
+                            <RadialScale Name="RadialScale2">
+                              <Radius>24</Radius>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <BackgroundColor>CornflowerBlue</BackgroundColor>
+                                <BackgroundGradientType>None</BackgroundGradientType>
+                                <BackgroundGradientEndColor>White</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                                <ShadowOffset>0pt</ShadowOffset>
+                              </Style>
+                              <Interval>NaN</Interval>
+                              <IntervalOffset>NaN</IntervalOffset>
+                              <MaximumValue>
+                                <Value>100</Value>
+                                <Multiplier>1</Multiplier>
+                              </MaximumValue>
+                              <MinimumValue>
+                                <Value>0</Value>
+                                <Multiplier>1</Multiplier>
+                              </MinimumValue>
+                              <GaugeMajorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>18</Length>
+                                <Width>2</Width>
+                              </GaugeMajorTickMarks>
+                              <GaugeMinorTickMarks>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>None</Style>
+                                  </Border>
+                                  <BackgroundColor>DimGray</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>8</Length>
+                                <Width>1</Width>
+                                <Hidden>true</Hidden>
+                              </GaugeMinorTickMarks>
+                              <MaximumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MaximumPin>
+                              <MinimumPin>
+                                <PinLabel>
+                                  <Style>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
+                                  <DistanceFromScale>0</DistanceFromScale>
+                                </PinLabel>
+                                <Style>
+                                  <Border>
+                                    <Color>DimGray</Color>
+                                    <Style>Solid</Style>
+                                  </Border>
+                                  <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                </Style>
+                                <Placement>Cross</Placement>
+                                <TickMarkImage>
+                                  <Source>External</Source>
+                                  <Value />
+                                </TickMarkImage>
+                                <Length>6</Length>
+                                <Width>6</Width>
+                                <Shape>Circle</Shape>
+                              </MinimumPin>
+                              <ScaleLabels>
+                                <Style>
+                                  <FontSize>14pt</FontSize>
+                                  <Color>#404040</Color>
+                                </Style>
+                                <Interval>NaN</Interval>
+                                <IntervalOffset>NaN</IntervalOffset>
+                                <DistanceFromScale>0</DistanceFromScale>
+                                <RotateLabels>true</RotateLabels>
+                                <ShowEndLabels>true</ShowEndLabels>
+                                <Hidden>true</Hidden>
+                                <UseFontPercent>true</UseFontPercent>
+                              </ScaleLabels>
+                              <Width>0</Width>
+                            </RadialScale>
+                          </GaugeScales>
+                          <BackFrame>
+                            <Style>
+                              <Border>
+                                <Style>None</Style>
+                              </Border>
+                              <BackgroundColor>CornflowerBlue</BackgroundColor>
+                              <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                              <BackgroundGradientEndColor>Gainsboro</BackgroundGradientEndColor>
+                              <BackgroundHatchType>None</BackgroundHatchType>
+                              <ShadowOffset>0pt</ShadowOffset>
+                            </Style>
+                            <FrameStyle>Edged</FrameStyle>
+                            <FrameShape>CustomCircular1</FrameShape>
+                            <FrameBackground>
+                              <Style>
+                                <BackgroundColor>WhiteSmoke</BackgroundColor>
+                                <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                                <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                                <BackgroundHatchType>None</BackgroundHatchType>
+                              </Style>
+                            </FrameBackground>
+                            <FrameImage>
+                              <Source>External</Source>
+                              <Value />
+                            </FrameImage>
+                          </BackFrame>
+                          <ClipContent>true</ClipContent>
+                          <TopImage>
+                            <Source>External</Source>
+                            <Value />
+                          </TopImage>
+                          <AspectRatio>1</AspectRatio>
+                          <Height>100</Height>
+                          <Width>100</Width>
+                          <ToolTip>=FormatPercent(code.Divide(Sum(Fields!ACTUAL_NET.Value), Sum(Fields!BUDGET_NET.Value)),0)</ToolTip>
+                        </RadialGauge>
+                      </RadialGauges>
+                      <BackFrame>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <BackgroundColor>Gainsboro</BackgroundColor>
+                          <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                          <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                          <BackgroundHatchType>None</BackgroundHatchType>
+                          <ShadowOffset>0pt</ShadowOffset>
+                        </Style>
+                        <FrameBackground>
+                          <Style>
+                            <BackgroundColor>Silver</BackgroundColor>
+                            <BackgroundGradientType>DiagonalLeft</BackgroundGradientType>
+                            <BackgroundGradientEndColor>Gray</BackgroundGradientEndColor>
+                            <BackgroundHatchType>None</BackgroundHatchType>
+                          </Style>
+                        </FrameBackground>
+                        <FrameImage>
+                          <Source>External</Source>
+                          <Value />
+                        </FrameImage>
+                      </BackFrame>
+                      <TopImage>
+                        <Source>External</Source>
+                        <Value />
+                      </TopImage>
+                      <DataSetName>dsGetDetails</DataSetName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                      </Style>
+                    </GaugePanel>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="grpYTD5">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!YTD_GROUPING.Value</GroupExpression>
+                </GroupExpressions>
+                <Filters>
+                  <Filter>
+                    <FilterExpression>=Fields!YTD_GROUPING.Value</FilterExpression>
+                    <Operator>Equal</Operator>
+                    <FilterValues>
+                      <FilterValue>1</FilterValue>
+                    </FilterValues>
+                  </Filter>
+                </Filters>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!YEARPERIOD.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <RepeatColumnHeaders>true</RepeatColumnHeaders>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
+        <DataSetName>dsGetDetails</DataSetName>
+        <Top>6.03528cm</Top>
+        <Left>6.47441cm</Left>
+        <Height>6cm</Height>
+        <Width>6.42917cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>4.77443in</Height>
+    <Style />
+  </Body>
+  <Width>5.13294in</Width>
+  <Page>
+    <PageHeight>21cm</PageHeight>
+    <PageWidth>29.7cm</PageWidth>
+    <LeftMargin>0.5cm</LeftMargin>
+    <RightMargin>0.5cm</RightMargin>
+    <TopMargin>0.5cm</TopMargin>
+    <BottomMargin>0.5cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsInitialSQLConnection">
+      <DataSourceReference>dsLiveCommercialReports</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>7badc41b-673c-4d41-9146-a004eed71545</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="dsselectedDatabase">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>="Data Source=" &amp; Parameters!ServerName.Value &amp; ";Initial Catalog=" &amp; Parameters!CATALOG.Value &amp; ";Integrated Security = SSPI"</ConnectString>
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>ea7be33a-173f-4371-9aed-4f8b2e123162</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsGetDetails">
+      <Query>
+        <DataSourceName>dsselectedDatabase</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@YEARPERIOD">
+            <Value>=Parameters!YEARPERIOD.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@COMPANYCODE">
+            <Value>=JOIN(Parameters!COMPANYCODE.Value,",")</Value>
+          </QueryParameter>
+          <QueryParameter Name="@BUDGETCODE">
+            <Value>=Parameters!BUDGETCODE.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@REVISEDBUDGET">
+            <Value>=Parameters!REVISEDBUDGET.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@FORECASTBUDGET">
+            <Value>=Parameters!FORECASTBUDGET.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@KEYVALUE">
+            <Value>=JOIN(Parameters!KEYVALUE.Value,",")</Value>
+          </QueryParameter>
+          <QueryParameter Name="@DOMAINNAME">
+            <Value>=Parameters!UserID.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@ADD_PERIODS">
+            <Value>=JOIN(Parameters!ADD_PERIODS.Value,",")</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>EXEC PSF_RPT_SEC_DB_GET_PROFIT_AND_LOSS_DETAILS @YEARPERIOD,
+@COMPANYCODE,
+@BUDGETCODE,
+@REVISEDBUDGET,
+@FORECASTBUDGET,
+@KEYVALUE,
+@DOMAINNAME,
+@ADD_PERIODS</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="ANALYSISCODE">
+          <DataField>ANALYSISCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL">
+          <Value>=iif(Fields!STATUS.Value = "ACTUAL",Fields!VALUE.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="MAINGROUP">
+          <DataField>MAINGROUP</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NOMAN6">
+          <DataField>NOMAN6</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET">
+          <Value>=iif(Fields!STATUS.Value = Parameters!BUDGETCODE.Value,Fields!VALUE.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="COMMITMENTS">
+          <Value>=iif(Fields!STATUS.Value = "COMMITMENTS",Fields!VALUE.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="PARENT_NODE_ID">
+          <DataField>PARENT_NODE_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL_INCOME">
+          <Value>=IIF(Fields!MAINGROUP.Value = "7",Fields!ACTUAL.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="FOLDER">
+          <DataField>FOLDER</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL_COST">
+          <Value>=IIF(Fields!MAINGROUP.Value = "8",Fields!ACTUAL.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="KEYLIST">
+          <DataField>KEYLIST</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL_GROSS">
+          <Value>=Fields!ACTUAL_INCOME.Value - Fields!ACTUAL_COST.Value</Value>
+        </Field>
+        <Field Name="KEYLIST_TITLE">
+          <DataField>KEYLIST_TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ACTUAL_OVERHEAD">
+          <Value>=IIF(Fields!MAINGROUP.Value = "9",Fields!ACTUAL.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="ACTUAL_NET">
+          <Value>=Fields!ACTUAL_GROSS.Value- Fields!ACTUAL_OVERHEAD.Value</Value>
+        </Field>
+        <Field Name="KEYLIST_GROUP_TITLE">
+          <DataField>KEYLIST_GROUP_TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_INCOME">
+          <Value>=IIF(Fields!MAINGROUP.Value = "7",Fields!BUDGET.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="ANALYSISTITLE">
+          <DataField>ANALYSISTITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_COST">
+          <Value>=IIF(Fields!MAINGROUP.Value = "8",Fields!BUDGET.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="YEARCODE">
+          <DataField>YEARCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_GROSS">
+          <Value>=Fields!BUDGET_INCOME.Value - Fields!BUDGET_COST.Value</Value>
+        </Field>
+        <Field Name="PERIOD">
+          <DataField>PERIOD</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_OVERHEAD">
+          <Value>=IIF(Fields!MAINGROUP.Value = "9",Fields!BUDGET.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="VALUE">
+          <DataField>VALUE</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="STATUS">
+          <DataField>STATUS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="BUDGET_NET">
+          <Value>=Fields!BUDGET_GROSS.Value - Fields!BUDGET_OVERHEAD.Value</Value>
+        </Field>
+        <Field Name="COMPANYCODE">
+          <DataField>COMPANYCODE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMMITMENTS_INCOME">
+          <Value>=IIF(Fields!MAINGROUP.Value = "7",Fields!COMMITMENTS.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="YEARPERIOD">
+          <DataField>YEARPERIOD</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMMITMENTS_COST">
+          <Value>=IIF(Fields!MAINGROUP.Value = "8",Fields!COMMITMENTS.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="COMMITMENTS_GROSS">
+          <Value>=Fields!COMMITMENTS_INCOME.Value - Fields!COMMITMENTS_COST.Value</Value>
+        </Field>
+        <Field Name="PERIOD_TITLE">
+          <DataField>PERIOD_TITLE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="COMMITMENTS_OVERHEAD">
+          <Value>=IIF(Fields!MAINGROUP.Value = "9",Fields!COMMITMENTS.Value,CDEC(0))</Value>
+        </Field>
+        <Field Name="COMMITMENTS_NET">
+          <Value>=Fields!COMMITMENTS_GROSS.Value - Fields!COMMITMENTS_OVERHEAD.Value</Value>
+        </Field>
+        <Field Name="YTD_GROUPING">
+          <Value>=IIF(Fields!YEARCODE.Value = Left(Parameters!YEARPERIOD.Label, InStr(Parameters!YEARPERIOD.Label,".")-1) and Fields!PERIOD.Value &lt;= RIGHT(Parameters!YEARPERIOD.Value,2), "1", "0")</Value>
+        </Field>
+        <Field Name="ANNUAL_GROUPING">
+          <Value>=IIF(Fields!YEARCODE.Value = Left(Parameters!YEARPERIOD.Label, InStr(Parameters!YEARPERIOD.Label,".")-1), "1", "0")</Value>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="ServerName">
+      <DataType>String</DataType>
+      <Prompt>SQL ServerName</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CATALOG">
+      <DataType>String</DataType>
+      <Prompt>Default SQL Catalog</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="UserID">
+      <DataType>String</DataType>
+      <Prompt>Either PSF UserID or Windows user if not found</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="COMPANYCODE">
+      <DataType>String</DataType>
+      <Prompt>Please select the Company(s)</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="YEARPERIOD">
+      <DataType>String</DataType>
+      <Prompt>Please select the Period</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ADD_PERIODS">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>None</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Include Year End Periods?</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="BUDGETCODE">
+      <DataType>String</DataType>
+      <Prompt>Select Budget for Variance Analysis</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FORECASTBUDGET">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>BUDGET</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Please select the Forecast Budget</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="KEYVALUE">
+      <DataType>String</DataType>
+      <Prompt>Please select the Costing Type(s) ?</Prompt>
+      <MultiValue>true</MultiValue>
+    </ReportParameter>
+    <ReportParameter Name="COMMITMENTS">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>N</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Include Commitments?</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ShowDetails">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>N</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Hide or Show Detail lines</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="REVISEDBUDGET">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>None</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>REVISEDBUDGET</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>Public Function Divide(Var as double, Bud as double) AS double
+    IF IsNothing(Var) Or IsNothing(Bud) Or Var = 0.00 Then
+        Divide = 0
+    ELSEIF Bud &lt;&gt; 0.00
+        Divide = Var  / Bud
+    ELSE
+        Divide = 0
+    END IF
+End Function
+
+Public Shared Function SetColor(ByVal Value As Integer) As String
+SetColor = "Black"
+If Value &lt; 0.00 Then 
+SetColor = "Red"
+End If
+End Function
+
+Public Function ReplaceNull(VarValue as Double) AS Double
+
+IF (IsNothing(VarValue)) 
+
+	ReplaceNull = 0
+ELSE 
+
+	ReplaceNull = VarValue
+
+END IF
+
+End Function</Code>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>53c8da44-889e-424b-a0b7-8a11c5da8baf</rd:ReportID>
+</Report>
